@@ -15,7 +15,7 @@ const Courses = () => {
     const fetchCourses = async () => {
         try {
             // Fetching "my" courses for now. Can be toggled to all courses.
-            const res = await axios.get('http://localhost:5000/api/courses/my');
+            const res = await axios.get(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/courses/my`);
             setCourses(res.data);
         } catch (err) {
             console.error(err);
@@ -25,7 +25,7 @@ const Courses = () => {
     const handleCreate = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:5000/api/courses', newCourse);
+            await axios.post(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/courses`, newCourse);
             setNewCourse({ title: '', description: '', price: '' });
             fetchCourses();
         } catch (err) {

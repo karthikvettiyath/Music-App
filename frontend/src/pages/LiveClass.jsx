@@ -88,7 +88,7 @@ const LiveClass = () => {
             // For this demo, let's make everyone a publisher so they can talk.
             const role = 'publisher';
 
-            const res = await axios.post('http://localhost:5000/api/meetings/token', {
+            const res = await axios.post(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/meetings/token`, {
                 channelName: channel,
                 role: role
             });
@@ -150,8 +150,8 @@ const LiveClass = () => {
                                 type="submit"
                                 disabled={loading}
                                 className={`w-full py-3 rounded-lg font-bold text-lg transition ${loading
-                                        ? 'bg-gray-600 cursor-not-allowed'
-                                        : 'bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 shadow-lg transform hover:-translate-y-0.5'
+                                    ? 'bg-gray-600 cursor-not-allowed'
+                                    : 'bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 shadow-lg transform hover:-translate-y-0.5'
                                     }`}
                             >
                                 {loading ? 'Joining...' : 'Join Class'}
